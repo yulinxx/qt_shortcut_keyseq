@@ -6,29 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>368</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="KeySequence_ListWidget" name="tableWidget">
+   <widget class="KeyTableWidget" name="keyTableWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>198</width>
-      <height>192</height>
+      <x>20</x>
+      <y>40</y>
+      <width>321</width>
+      <height>381</height>
      </rect>
     </property>
    </widget>
-   <widget class="KeySequence_Widget" name="widget" native="true">
+   <widget class="KeyGrabWidget" name="keyGrabWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>60</y>
+      <x>20</x>
+      <y>0</y>
       <width>120</width>
       <height>31</height>
      </rect>
@@ -40,8 +40,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
-     <height>22</height>
+     <width>368</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -130,14 +130,14 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>KeySequence_ListWidget</class>
+   <class>KeyTableWidget</class>
    <extends>QTableWidget</extends>
-   <header location="global">keysequence_listwidget.hpp</header>
+   <header location="global">KeyTableWidget.h</header>
   </customwidget>
   <customwidget>
-   <class>KeySequence_Widget</class>
+   <class>KeyGrabWidget</class>
    <extends>QWidget</extends>
-   <header location="global">keysequence_widget.hpp</header>
+   <header location="global">KeyGrabWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

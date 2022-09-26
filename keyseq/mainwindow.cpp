@@ -8,12 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
    // ui->tableWidget->set_show_reset_buttons(true);
-    qDebug()<<ui->tableWidget->show_reset_buttons();
+//    qDebug()<<ui->keyTableWidget->showResetBtns();
 
-    ui->tableWidget->append_window(this);
-    ui->tableWidget->set_show_reset_buttons(false);
-    QKeySequence seq(QKeySequence::Open);
-    ui->actionDid->setShortcut(seq);
+    ui->keyTableWidget->appendWindow(this);
+    ui->keyTableWidget->setShowResetBtns(false);
+//    QKeySequence seq(QKeySequence::Open);
+//    ui->actionDid->setShortcut(seq);
 
 }
 
