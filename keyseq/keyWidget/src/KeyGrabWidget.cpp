@@ -26,8 +26,6 @@ public:
           m_pBtn (new QPushButton(pWidget)),
           m_pAction(nullptr)
     {
-        return;
-
         if ( action )
             setAction(action);
 
@@ -39,7 +37,7 @@ public:
         m_pBtn->setSizePolicy(pWidget->sizePolicy());
 
         m_pBtn->setFocusProxy(pWidget);
-//        m_pBtn->installEventFilter(pWidget);
+        m_pBtn->installEventFilter(pWidget);
 
         pWidget->setFocusPolicy(Qt::StrongFocus);
         pWidget->setAttribute(Qt::WA_MacShowFocusRect, true);
@@ -60,8 +58,6 @@ public:
 
     void updateLabel()
     {
-        return;
-
         if ( m_keySeq.isEmpty() )
             m_pBtn->setText(KeyGrabWidget::tr("(empty)"));
         else
@@ -70,7 +66,6 @@ public:
 
     void updateSequence()
     {
-        return;
         if ( m_pAction )
             m_pAction->setShortcut(m_keySeq);
         updateLabel();
@@ -79,7 +74,6 @@ public:
 
     void startGrab()
     {
-        return;
         m_prevKeySeq = m_keySeq;
         m_pBtn->setCheckable(true);
         m_pBtn->setChecked(true);
@@ -90,7 +84,6 @@ public:
 
     void endGrabbing()
     {
-        return;
         m_pBtn->setCheckable(false);
         m_pBtn->setChecked(false);
         m_pGrabWidget->releaseKeyboard();
@@ -144,45 +137,38 @@ QAction *KeyGrabWidget::attachedAction() const
 
 void KeyGrabWidget::slotSetKeySequence(const QKeySequence &seq)
 {
-    return;
     pPrivate->m_keySeq = seq;
     pPrivate->updateSequence();
 }
 
 void KeyGrabWidget::slotSetDefaultSequence(const QKeySequence &seq)
 {
-    return;
     pPrivate->m_defaultKeySeq = seq;
 }
 
 void KeyGrabWidget::slotClear()
 {
-    return;
     slotSetKeySequence(QKeySequence());
 }
 
 void KeyGrabWidget::slotResetToDefault()
 {
-    return;
     slotSetKeySequence(pPrivate->m_defaultKeySeq);
 }
 
 void KeyGrabWidget::slotSetAttachedAction(QAction *action)
 {
-    return;
     pPrivate->setAction(action);
     emit sigAttachedActionChanged(action);
 }
 
 void KeyGrabWidget::slotActChange()
 {
-    return;
     slotSetKeySequence(pPrivate->m_pAction->shortcut());
 }
 
 void KeyGrabWidget::mousePressEvent(QMouseEvent *)
 {
-    return;
     if ( pPrivate->m_bGrab )
     {
         pPrivate->m_keySeq = pPrivate->m_prevKeySeq;
@@ -194,7 +180,6 @@ void KeyGrabWidget::mousePressEvent(QMouseEvent *)
 
 void KeyGrabWidget::keyPressEvent(QKeyEvent *event)
 {
-    return;
     if ( !pPrivate->m_bGrab )
     {
         event->ignore();
@@ -241,7 +226,6 @@ void KeyGrabWidget::keyPressEvent(QKeyEvent *event)
 
 bool KeyGrabWidget::eventFilter(QObject *obj, QEvent *event)
 {
-    return true;
     switch(event->type())
     {
         case QEvent::KeyPress:
@@ -260,8 +244,6 @@ bool KeyGrabWidget::eventFilter(QObject *obj, QEvent *event)
 
 bool KeyGrabWidget::event(QEvent *event)
 {
-    return QWidget::event(event);
-
     if ( event->type() == QEvent::KeyPress && pPrivate->m_bGrab )
     {
          QKeyEvent *kevent = static_cast<QKeyEvent *>(event);
@@ -277,8 +259,6 @@ bool KeyGrabWidget::event(QEvent *event)
 
 void KeyGrabWidget::changeEvent(QEvent *event)
 {
-    return;
-
     QWidget::changeEvent(event);
     switch (event->type())
     {

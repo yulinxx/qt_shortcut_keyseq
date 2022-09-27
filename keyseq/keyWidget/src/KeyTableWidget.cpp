@@ -20,6 +20,8 @@ KeyTableWidget::KeyTableWidget(QWidget *parent) :
     insertColumn(2);
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    setEditTriggers(EditTrigger::NoEditTriggers);
 }
 
 void KeyTableWidget::insertActRow(QAction* action)
